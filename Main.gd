@@ -199,7 +199,7 @@ func _gui_input(event: InputEvent) -> void:
             touch_start = event.position
         elif touch_active:
             touch_active = false
-            var delta := event.position - touch_start
+            var delta: Vector2 = event.position - touch_start
             if absf(delta.x) > 28 or absf(delta.y) > 28:
                 if absf(delta.x) > absf(delta.y):
                     move_piece(1 if delta.x > 0 else -1, 0)
@@ -287,7 +287,7 @@ func _draw() -> void:
         var r := Rect2(22 + i * (bw + gap), controls_y, bw, 54)
         buttons[keys[i]] = r
         draw_rect(r, Color("#1b2747"), true, 10.0)
-        draw_rect(r, Color("#34466e"), false, 10.0, 1.5)
+        draw_rect(r, Color("#34466e"), false, 1.5)
         draw_string(ThemeDB.fallback_font, Vector2(r.position.x, r.position.y + 33), labels[i], HORIZONTAL_ALIGNMENT_CENTER, r.size.x, 17 if i < 3 else 11, Color("#eef3ff"))
 
     var small_y := s.y - 34
